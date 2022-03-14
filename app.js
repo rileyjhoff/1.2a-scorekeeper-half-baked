@@ -1,5 +1,6 @@
 // import functions and grab DOM elements
 import { renderGame } from './render-utils.js';
+
 const currentGameEl = document.getElementById('current-game-container');
 const pastGamesEl = document.getElementById('past-games-container');
 
@@ -15,7 +16,7 @@ const teamTwoLabel = document.getElementById('team-two-name');
 // create an array to hold on to the state of past games
 
 let name1 = '';
-let name2 =  '';
+let name2 = '';
 let score1 = 0;
 let score2 = 0;
 
@@ -78,7 +79,7 @@ function refreshCurrentGameEl() {
     // const gameEl = . . . 
     // make a new gameEl here by calling renderGame with the approriate arguments. 
     // Check the renderGame function declaration in render-utils.js to figure out the correct arguments to pass to this function 
-    // In render-utils.js as yourself: How many arguments does the function take? What order does it take them in?
+    // In render-utils.js ask yourself: How many arguments does the function take? What order does it take them in?
     
     gameEl.classList.add('current');
 

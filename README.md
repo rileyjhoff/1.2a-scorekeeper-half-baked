@@ -1,6 +1,7 @@
 # Soccer Scorekeeper
 
 ## Learning Objectives
+
 - Model out examples of state that might be tracked using an array of objects
 - Use an object to create a data model for an item in the human world
 - Use the FormData  constructor to grab multiple named values from an HTML form.
@@ -19,8 +20,8 @@
 [Buggy Soccer Scorekeeper](https://github.com/alchemycodelab/buggy-js-soccer-scorekeeper)
 
 ### Live Example:
-https://alchemycodelab.github.io/web-01-soccer-scorekeeper/
 
+https://alchemycodelab.github.io/web-01-soccer-scorekeeper/
 
 | User should be able to . . .                                                         |             |
 | :----------------------------------------------------------------------------------- | ----------: |
