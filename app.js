@@ -22,6 +22,8 @@ let score1 = 0;
 let score2 = 0;
 let pastGames = [];
 
+console.log(pastGames);
+
 nameFormButton.addEventListener('click', () => {
     // get the name data from the input
     // set the state to this data from the input
@@ -69,6 +71,7 @@ finishGameButton.addEventListener('click', () => {
     // then push it to your array in state
     // (be sure to make a new object. do not declare the object in global scope and mutate it for reuse. This would cause difficult bugs)
     storeCurrentGame();
+    console.log(pastGames);
     displayAllGames();
     // reset the state to zero and empty strings
     clearCurrentGame();
@@ -98,9 +101,14 @@ function displayAllGames() {
     // loop through the past games in state
     // use the renderGame function to render and append a past game for each past game in state
     // again, review the renderGame function in render-utils.js. How many arguments does it take? What order does it take them in?
-    // for (let game of pastGames) {
-    
-    // }
+    for (let games of pastGames) {
+        name1 = games.name1;
+        name2 = games.name2;
+        score1 = games.score1;
+        score2 = games.score2;
+        let gameHistoryDiv = renderGame(name1, name2, score1, score2);
+        pastGamesEl.append(gameHistoryDiv);
+    }
 }
 
 function clearCurrentGame() {
