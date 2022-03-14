@@ -73,15 +73,13 @@ finishGameButton.addEventListener('click', () => {
     // (be sure to make a new object. do not declare the object in global scope and mutate it for reuse. This would cause difficult bugs)
     
     displayAllGames();
-
     // reset the state to zero and empty strings
-    
-    // refresh the current game element with new data by calling the appropriate function
+    clearCurrentGame();
 });
 
 function refreshCurrentGameEl() {
     currentGameEl.textContent = '';
-    
+
     teamOneLabel.textContent = name1;
     teamTwoLabel.textContent = name2;
 
@@ -103,4 +101,14 @@ function displayAllGames() {
     // loop through the past games in state
     // use the renderGame function to render and append a past game for each past game in state
     // again, review the renderGame function in render-utils.js. How many arguments does it take? What order does it take them in?
+}
+
+function clearCurrentGame() {
+    name1 = '';
+    name2 = '';
+    score1 = 0;
+    score2 = 0;
+    teamOneLabel.textContent = 'Team One';
+    teamTwoLabel.textContent = 'Team Two';
+    currentGameEl.textContent = '';
 }
