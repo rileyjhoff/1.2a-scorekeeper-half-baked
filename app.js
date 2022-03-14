@@ -32,6 +32,7 @@ nameFormButton.addEventListener('click', () => {
     teamTwoName.value = '';
     // refresh the current game element with new data by calling the appropriate function
     refreshCurrentGameEl();
+    turnOnGameButtons();
 });
 
 teamOneAddButton.addEventListener('click', () => {
@@ -72,6 +73,7 @@ finishGameButton.addEventListener('click', () => {
     displayAllGames();
     // reset the state to zero and empty strings
     clearCurrentGame();
+    turnOffGameButtons();
 });
 
 function refreshCurrentGameEl() {
@@ -121,4 +123,20 @@ function clearCurrentGame() {
 function storeCurrentGame() {
     let gameHistory = { name1: name1, name2:name2, score1:score1, score2:score2 };
     pastGames.push(gameHistory);
+}
+
+function turnOnGameButtons() {
+    finishGameButton.disabled = false;
+    teamOneAddButton.disabled = false;
+    teamOneSubtractButton.disabled = false;
+    teamTwoAddButton.disabled = false;
+    teamTwoSubtractButton.disabled = false;
+}
+
+function turnOffGameButtons() {
+    finishGameButton.disabled = true;
+    teamOneAddButton.disabled = true;
+    teamOneSubtractButton.disabled = true;
+    teamTwoAddButton.disabled = true;
+    teamTwoSubtractButton.disabled = true;
 }
