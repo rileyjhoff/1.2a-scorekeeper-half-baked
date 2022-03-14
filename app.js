@@ -1,5 +1,5 @@
 // import functions and grab DOM elements
-import { renderGame, renderTeam } from './render-utils.js';
+import { renderGame } from './render-utils.js';
 
 const currentGameEl = document.getElementById('current-game-container');
 const pastGamesEl = document.getElementById('past-games-container');
@@ -21,8 +21,6 @@ let name2 = '';
 let score1 = 0;
 let score2 = 0;
 let pastGames = [];
-
-console.log(pastGames);
 
 nameFormButton.addEventListener('click', () => {
     // get the name data from the input
@@ -71,7 +69,6 @@ finishGameButton.addEventListener('click', () => {
     // then push it to your array in state
     // (be sure to make a new object. do not declare the object in global scope and mutate it for reuse. This would cause difficult bugs)
     storeCurrentGame();
-    console.log(pastGames);
     displayAllGames();
     // reset the state to zero and empty strings
     clearCurrentGame();
