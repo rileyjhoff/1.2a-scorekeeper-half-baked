@@ -15,14 +15,12 @@ const teamTwoLabel = document.getElementById('team-two-label');
 const teamOneName = document.getElementById('team-one-name');
 const teamTwoName = document.getElementById('team-two-name');
 
-console.log(teamOneLabel, teamTwoLabel);
-
 // create an array to hold on to the state of past games
-
 let name1 = '';
 let name2 = '';
 let score1 = 0;
 let score2 = 0;
+let pastGames = [];
 
 nameFormButton.addEventListener('click', () => {
     // get the name data from the input
@@ -65,13 +63,12 @@ teamTwoSubtractButton.addEventListener('click', () => {
 });
 
 finishGameButton.addEventListener('click', () => {
-    
     // add the current game to an array of games in state
     // it will be helpful to keep track of these games as objects with 4 properties, one for each piece of state we're tracking
     // for example, make an object like this: { name1: 'ducks', name2: 'bears' ,score1: 1, score2: 2 } 
     // then push it to your array in state
     // (be sure to make a new object. do not declare the object in global scope and mutate it for reuse. This would cause difficult bugs)
-    
+    storeCurrentGame();
     displayAllGames();
     // reset the state to zero and empty strings
     clearCurrentGame();
@@ -97,10 +94,13 @@ function refreshCurrentGameEl() {
 
 function displayAllGames() {
     // clear out the past games list in the DOM
-
+    pastGamesEl.textContent = '';
     // loop through the past games in state
     // use the renderGame function to render and append a past game for each past game in state
     // again, review the renderGame function in render-utils.js. How many arguments does it take? What order does it take them in?
+    // for (let game of pastGames) {
+    
+    // }
 }
 
 function clearCurrentGame() {
@@ -111,4 +111,9 @@ function clearCurrentGame() {
     teamOneLabel.textContent = 'Team One';
     teamTwoLabel.textContent = 'Team Two';
     currentGameEl.textContent = '';
+}
+
+function storeCurrentGame() {
+    let gameHistory = { name1: name1, name2:name2, score1:score1, score2:score2 };
+    pastGames.push(gameHistory);
 }
