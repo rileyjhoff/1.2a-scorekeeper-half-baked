@@ -1,5 +1,5 @@
 // import functions and grab DOM elements
-import { renderGame } from './render-utils.js';
+import { renderGame, renderTeam } from './render-utils.js';
 
 const currentGameEl = document.getElementById('current-game-container');
 const pastGamesEl = document.getElementById('past-games-container');
@@ -20,14 +20,16 @@ let name2 = '';
 let score1 = 0;
 let score2 = 0;
 
-nameFormButton.addEventListener('click', (e) => {
+nameFormButton.addEventListener('click', () => {
     // get the name data from the form
-
+    renderTeam();
     // set the state to this data from the form
-
+    name1 = 'blah';
+    name2 = 'blah';
     // reset the form values
-
+    
     // refresh the current game element with new data by calling the appropriate function
+    refreshCurrentGameEl();
 });
 
 
