@@ -15,12 +15,28 @@ const teamTwoLabel = document.getElementById('team-two-label');
 const teamOneName = document.getElementById('team-one-name');
 const teamTwoName = document.getElementById('team-two-name');
 
+// const teamDropdown = document.getElementById('team-dropdown');
+// const nameForm = document.querySelector('.name-form');
+
 // create an array to hold on to the state of past games
 let name1 = '';
 let name2 = '';
+let name3 = '';
 let score1 = 0;
 let score2 = 0;
+let score3 = 0;
 let pastGames = [];
+
+// teamDropdown.addEventListener('change', () => {
+//     console.log('working');
+//     console.log(teamDropdown.value);
+//     if (teamDropdown.value === 'two') {
+//         renderTwoTeamInputs();
+//     }
+//     if (teamDropdown.value === 'three') {
+//         renderThreeTeamInputs();
+//     }
+// });
 
 nameFormButton.addEventListener('click', () => {
     // get the name data from the input
@@ -121,7 +137,7 @@ function clearCurrentGame() {
 }
 
 function storeCurrentGame() {
-    let gameHistory = { name1: name1, name2:name2, score1:score1, score2:score2 };
+    let gameHistory = { name1: name1, name2:name2, name3:name3, score1:score1, score2:score2, score3:score3 };
     pastGames.push(gameHistory);
 }
 
@@ -140,3 +156,26 @@ function turnOffGameButtons() {
     teamTwoAddButton.disabled = true;
     teamTwoSubtractButton.disabled = true;
 }
+
+// function renderTwoTeamInputs() {
+//     let teamOneLabelEl = renderTeamInputs('one');
+//     let teamTwoLabelEl = renderTeamInputs('two');
+//     let nameButtonEl = renderNameButton();
+
+//     nameButtonEl.setAttribute('id', 'name-form-button');
+
+//     nameForm.textContent = '';
+//     nameForm.append(teamOneLabelEl, teamTwoLabelEl, nameButtonEl);
+// }
+
+// function renderThreeTeamInputs() {
+//     let teamOneLabelEl = renderTeamInputs('one');
+//     let teamTwoLabelEl = renderTeamInputs('two');
+//     let teamThreeLabelEl = renderTeamInputs('three');
+//     let nameButtonEl = renderNameButton();
+
+//     nameButtonEl.setAttribute('id', 'name-form-button');
+
+//     nameForm.textContent = '';
+//     nameForm.append(teamOneLabelEl, teamTwoLabelEl, teamThreeLabelEl, nameButtonEl);
+// }

@@ -23,3 +23,24 @@ export function renderTeam(name, score) {
 
     return teamDiv;
 }
+
+export function renderTeamInputs(teamNumber) {
+    const labelEl = document.createElement('label');
+    const inputEl = document.createElement('input');
+
+    labelEl.textContent = `Team ${teamNumber} name`;
+
+    labelEl.append(inputEl);
+
+    return labelEl;
+}
+
+export function renderNameButton() {
+    let nameButtonEl = document.createElement('button');
+
+    nameButtonEl.textContent = 'Name teams';
+    // nameButtonEl.setAttribute('id', 'name-form-button');
+
+
+    return nameButtonEl;
+}
