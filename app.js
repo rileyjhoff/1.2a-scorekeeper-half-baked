@@ -1,5 +1,6 @@
 // import functions and grab DOM elements
 import { renderGame } from './render-utils.js';
+
 const currentGameEl = document.getElementById('current-game-container');
 const pastGamesEl = document.getElementById('past-games-container');
 
@@ -9,64 +10,72 @@ const teamTwoAddButton = document.getElementById('team-two-add-button');
 const teamOneSubtractButton = document.getElementById('team-one-subtract-button');
 const teamTwoSubtractButton = document.getElementById('team-two-subtract-button');
 const finishGameButton = document.getElementById('finish-game-button');
-const teamOneLabel = document.getElementById('team-one-name');
-const teamTwoLabel = document.getElementById('team-two-name');
+const teamOneLabel = document.getElementById('team-one-label');
+const teamTwoLabel = document.getElementById('team-two-label');
+const teamOneName = document.getElementById('team-one-name');
+const teamTwoName = document.getElementById('team-two-name');
 
 // create an array to hold on to the state of past games
-
 let name1 = '';
-let name2 =  '';
+let name2 = '';
+let name3 = '';
 let score1 = 0;
 let score2 = 0;
+let score3 = 0;
+let pastGames = [];
 
-nameFormButton.addEventListener('click', (e) => {
-    // get the name data from the form
-
-    // set the state to this data from the form
-
-    // reset the form values
-
+nameFormButton.addEventListener('click', () => {
+    // get the name data from the input
+    // set the state to this data from the input
+    name1 = teamOneName.value;
+    name2 = teamTwoName.value;
+    // reset the input values
+    teamOneName.value = '';
+    teamTwoName.value = '';
     // refresh the current game element with new data by calling the appropriate function
+    refreshCurrentGameEl();
+    turnOnGameButtons();
 });
-
 
 teamOneAddButton.addEventListener('click', () => {
     // increment the current state for team one's score
-    
+    score1++;
     // refresh the current game element with new data by calling the appropriate function
+    refreshCurrentGameEl();
 });
 
 teamTwoAddButton.addEventListener('click', () => {
     // increment the current state for team two's score
-
+    score2++;
     // refresh the current game element with new data by calling the appropriate function
+    refreshCurrentGameEl();
 });
 
 teamOneSubtractButton.addEventListener('click', () => {
     // decrement the current state for team one's score
-
+    score1--;
     // refresh the current game element with new data by calling the appropriate function
+    refreshCurrentGameEl();
 });
 
 teamTwoSubtractButton.addEventListener('click', () => {
     // decrement the current state for team two's score
-
+    score2--;
     // refresh the current game element with new data by calling the appropriate function
+    refreshCurrentGameEl();
 });
 
 finishGameButton.addEventListener('click', () => {
-    
     // add the current game to an array of games in state
     // it will be helpful to keep track of these games as objects with 4 properties, one for each piece of state we're tracking
     // for example, make an object like this: { name1: 'ducks', name2: 'bears' ,score1: 1, score2: 2 } 
     // then push it to your array in state
     // (be sure to make a new object. do not declare the object in global scope and mutate it for reuse. This would cause difficult bugs)
-    
+    storeCurrentGame();
     displayAllGames();
-
     // reset the state to zero and empty strings
-    
-    // refresh the current game element with new data by calling the appropriate function
+    clearCurrentGame();
+    turnOffGameButtons();
 });
 
 function refreshCurrentGameEl() {
@@ -78,8 +87,9 @@ function refreshCurrentGameEl() {
     // const gameEl = . . . 
     // make a new gameEl here by calling renderGame with the approriate arguments. 
     // Check the renderGame function declaration in render-utils.js to figure out the correct arguments to pass to this function 
-    // In render-utils.js as yourself: How many arguments does the function take? What order does it take them in?
-    
+    // In render-utils.js ask yourself: How many arguments does the function take? What order does it take them in?
+    const gameEl = renderGame(name1, name2, score1, score2);
+
     gameEl.classList.add('current');
 
     currentGameEl.append(gameEl);
@@ -88,8 +98,86 @@ function refreshCurrentGameEl() {
 
 function displayAllGames() {
     // clear out the past games list in the DOM
-
+    pastGamesEl.textContent = '';
     // loop through the past games in state
     // use the renderGame function to render and append a past game for each past game in state
     // again, review the renderGame function in render-utils.js. How many arguments does it take? What order does it take them in?
+    for (let games of pastGames) {
+        name1 = games.name1;
+        name2 = games.name2;
+        score1 = games.score1;
+        score2 = games.score2;
+        let gameHistoryDiv = renderGame(name1, name2, score1, score2);
+        pastGamesEl.append(gameHistoryDiv);
+    }
 }
+
+function clearCurrentGame() {
+    name1 = '';
+    name2 = '';
+    score1 = 0;
+    score2 = 0;
+    teamOneLabel.textContent = 'Team One';
+    teamTwoLabel.textContent = 'Team Two';
+    currentGameEl.textContent = '';
+}
+
+function storeCurrentGame() {
+    let gameHistory = { name1: name1, name2:name2, name3:name3, score1:score1, score2:score2, score3:score3 };
+    pastGames.push(gameHistory);
+}
+
+function turnOnGameButtons() {
+    finishGameButton.disabled = false;
+    teamOneAddButton.disabled = false;
+    teamOneSubtractButton.disabled = false;
+    teamTwoAddButton.disabled = false;
+    teamTwoSubtractButton.disabled = false;
+}
+
+function turnOffGameButtons() {
+    finishGameButton.disabled = true;
+    teamOneAddButton.disabled = true;
+    teamOneSubtractButton.disabled = true;
+    teamTwoAddButton.disabled = true;
+    teamTwoSubtractButton.disabled = true;
+}
+
+// code to tinker with later
+
+// const teamDropdown = document.getElementById('team-dropdown');
+// const nameForm = document.querySelector('.name-form');
+
+// teamDropdown.addEventListener('change', () => {
+//     console.log('working');
+//     console.log(teamDropdown.value);
+//     if (teamDropdown.value === 'two') {
+//         renderTwoTeamInputs();
+//     }
+//     if (teamDropdown.value === 'three') {
+//         renderThreeTeamInputs();
+//     }
+// });
+
+// function renderTwoTeamInputs() {
+//     let teamOneLabelEl = renderTeamInputs('one');
+//     let teamTwoLabelEl = renderTeamInputs('two');
+//     let nameButtonEl = renderNameButton();
+
+//     nameButtonEl.setAttribute('id', 'name-form-button');
+
+//     nameForm.textContent = '';
+//     nameForm.append(teamOneLabelEl, teamTwoLabelEl, nameButtonEl);
+// }
+
+// function renderThreeTeamInputs() {
+//     let teamOneLabelEl = renderTeamInputs('one');
+//     let teamTwoLabelEl = renderTeamInputs('two');
+//     let teamThreeLabelEl = renderTeamInputs('three');
+//     let nameButtonEl = renderNameButton();
+
+//     nameButtonEl.setAttribute('id', 'name-form-button');
+
+//     nameForm.textContent = '';
+//     nameForm.append(teamOneLabelEl, teamTwoLabelEl, teamThreeLabelEl, nameButtonEl);
+// }
