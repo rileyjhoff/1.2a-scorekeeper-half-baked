@@ -15,9 +15,6 @@ const teamTwoLabel = document.getElementById('team-two-label');
 const teamOneName = document.getElementById('team-one-name');
 const teamTwoName = document.getElementById('team-two-name');
 
-// const teamDropdown = document.getElementById('team-dropdown');
-// const nameForm = document.querySelector('.name-form');
-
 // create an array to hold on to the state of past games
 let name1 = '';
 let name2 = '';
@@ -26,17 +23,6 @@ let score1 = 0;
 let score2 = 0;
 let score3 = 0;
 let pastGames = [];
-
-// teamDropdown.addEventListener('change', () => {
-//     console.log('working');
-//     console.log(teamDropdown.value);
-//     if (teamDropdown.value === 'two') {
-//         renderTwoTeamInputs();
-//     }
-//     if (teamDropdown.value === 'three') {
-//         renderThreeTeamInputs();
-//     }
-// });
 
 nameFormButton.addEventListener('click', () => {
     // get the name data from the input
@@ -156,6 +142,22 @@ function turnOffGameButtons() {
     teamTwoAddButton.disabled = true;
     teamTwoSubtractButton.disabled = true;
 }
+
+// code to tinker with later
+
+// const teamDropdown = document.getElementById('team-dropdown');
+// const nameForm = document.querySelector('.name-form');
+
+// teamDropdown.addEventListener('change', () => {
+//     console.log('working');
+//     console.log(teamDropdown.value);
+//     if (teamDropdown.value === 'two') {
+//         renderTwoTeamInputs();
+//     }
+//     if (teamDropdown.value === 'three') {
+//         renderThreeTeamInputs();
+//     }
+// });
 
 // function renderTwoTeamInputs() {
 //     let teamOneLabelEl = renderTeamInputs('one');
